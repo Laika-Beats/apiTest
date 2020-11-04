@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>API + Embed video Test</title>
+</head>
+
+<body>
+  <!-- Retrieved data will be dumped here -->
+  
+  <!--Attempting to embed with video tags-->
+
+
+  <a class="windy-player" name="windy-webcam-timelapse-player" data-id="" data-play="day" href="" target="_blank">Test 2</a> <!-- Windy's code for embedding-->
+  
+  <script async type="text/javascript" src="https://webcams.windy.com/webcams/public/embed/script/player.js"></script> <!-- Windy's code for embedding-->
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // This is our API key
+    var APIKey = "TupZXJILOaPozNtTwqIEjkAFPDuJ4VOs";
+
+    // Here we are building the URL we need to query the database
+    var queryURL = "https://api.windy.com/api/webcams/v2/list" +
+      "?key=" + APIKey;
+
+    // Here we run our AJAX call to the OpenWeatherMap API
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      // We store all of the retrieved data inside of an object called "response"
+      .then(function(response) {
+
+        // Log the queryURL
+        console.log(queryURL);
+
+        // Log the resulting object
+        console.log(response);
+        console.log(response.result.webcams[0].id)
+
+        
+
+        // Transfer content to HTML
+        $(".windy-player").attr("href", "https://windy.com/webcams/" + response.result.webcams[0].id);
+        $(".windy-player").attr("data-id", response.result.webcams[0].id);
+      });
+  </script>
+</body>
+</html>
