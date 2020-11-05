@@ -9,7 +9,7 @@
 <body>
   <!-- Retrieved data will be dumped here -->
   
-  <!--Attempting to embed with video tags-->
+  <video class="city" src="">Test 1</video> <!--Attempting to embed with video tags-->
 
 
   <a class="windy-player" name="windy-webcam-timelapse-player" data-id="" data-play="day" href="" target="_blank">Test 2</a> <!-- Windy's code for embedding-->
@@ -47,6 +47,7 @@
         // Transfer content to HTML
         $(".windy-player").attr("href", "https://windy.com/webcams/" + response.result.webcams[0].id);
         $(".windy-player").attr("data-id", response.result.webcams[0].id);
+        $(".city").attr("src", "https://windy.com/webcams/" + response.result.webcams[0].id);  
       });
   </script>
 </body>
